@@ -3,9 +3,9 @@ import {
   GitHubBanner,
   WelcomePage,
   Authenticated,
-} from "@refinedev/core";
-import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
-import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
+} from '@refinedev/core'
+import { DevtoolsPanel, DevtoolsProvider } from '@refinedev/devtools'
+import { RefineKbar, RefineKbarProvider } from '@refinedev/kbar'
 
 import {
   AuthPage,
@@ -13,20 +13,21 @@ import {
   notificationProvider,
   RefineSnackbarProvider,
   ThemedLayoutV2,
-} from "@refinedev/mui";
+} from '@refinedev/mui'
 
-import dataProvider from "@refinedev/simple-rest";
-import CssBaseline from "@mui/material/CssBaseline";
-import GlobalStyles from "@mui/material/GlobalStyles";
-import { BrowserRouter, Route, Routes, Outlet } from "react-router-dom";
+import dataProvider from '@refinedev/simple-rest'
+import CssBaseline from '@mui/material/CssBaseline'
+import GlobalStyles from '@mui/material/GlobalStyles'
+import { BrowserRouter, Route, Routes, Outlet } from 'react-router-dom'
 import routerBindings, {
   NavigateToResource,
   CatchAllNavigate,
   UnsavedChangesNotifier,
   DocumentTitleHandler,
-} from "@refinedev/react-router-v6";
-import { ColorModeContextProvider } from "./contexts/color-mode";
-import { Header } from "./components/header";
+} from '@refinedev/react-router-v6'
+import { ColorModeContextProvider } from './contexts/color-mode'
+import { Header } from './components/header'
+import Create from './pages/create'
 
 function App() {
   return (
@@ -35,22 +36,23 @@ function App() {
       <RefineKbarProvider>
         <ColorModeContextProvider>
           <CssBaseline />
-          <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
+          <GlobalStyles styles={{ html: { WebkitFontSmoothing: 'auto' } }} />
           <RefineSnackbarProvider>
             <DevtoolsProvider>
               <Refine
-                dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
+                dataProvider={dataProvider('https://api.fake-rest.refine.dev')}
                 notificationProvider={notificationProvider}
                 routerProvider={routerBindings}
                 options={{
                   syncWithLocation: true,
                   warnWhenUnsavedChanges: true,
                   useNewQueryKeys: true,
-                  projectId: "T2q5CL-G2rWMn-RN2BT2",
+                  projectId: 'T2q5CL-G2rWMn-RN2BT2',
                 }}
               >
                 <Routes>
-                  <Route index element={<WelcomePage />} />
+                  {/* <Route index element={<WelcomePage />} /> */}
+                  <Route index element={<Create />} />
                 </Routes>
                 <RefineKbar />
                 <UnsavedChangesNotifier />
@@ -62,7 +64,7 @@ function App() {
         </ColorModeContextProvider>
       </RefineKbarProvider>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App
